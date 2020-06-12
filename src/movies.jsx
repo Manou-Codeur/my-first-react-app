@@ -7,7 +7,9 @@ class Movies extends Component {
     render() { 
         return (
             <React.Fragment>
-                <p className="currentState">Showing {this.movieSize} movies in the database.</p>
+                <p className="currentState">
+                    {this.renderMsg()}
+                </p>
 
                 <table>
                     <thead>
@@ -26,6 +28,11 @@ class Movies extends Component {
                 </table>
             </React.Fragment>
         )
+    }
+
+    renderMsg() {
+        let msg = this.movieSize > 0 ? `Showing ${this.movieSize} movies in the database.` : `There is no movies in the database.`;
+        return msg;
     }
 
     renderItems() {
