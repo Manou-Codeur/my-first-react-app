@@ -1,7 +1,30 @@
-.blue {
-    background-color: blue;
+.currentState {
+    font-size: 20px;
+    margin-left: 5%;
 }
 
-.red {
-    background-color: red;
+table {
+    width: 100%;
+    font-size: 25px;
+    border-spacing: 5px;
 }
+
+ th {
+    background-color: whitesmoke;
+}
+
+tbody td {
+    text-align: center;
+}
+
+.dlt {
+    background-color: red;
+    border: 0;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: medium;
+    cursor: pointer;
+    font-weight: 500;
+}
+

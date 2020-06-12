@@ -30,7 +30,7 @@ const movies = [
     {
         _id: "5bfe5foppzr6qsde7q3",
         title: "Dynastie",
-        genere: "Daily",
+        genere: "Action",
         numberInStock: 60,
         dailyRentalRate: 4.1
     }
