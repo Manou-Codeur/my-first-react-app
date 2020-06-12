@@ -7,7 +7,7 @@ class Movies extends Component {
     render() { 
         return (
             <React.Fragment>
-                <p className="currentState">Showing 5 movies in the database.</p>
+                <p className="currentState">Showing {this.movieSize} movies in the database.</p>
 
                 <table>
                     <thead>
@@ -42,12 +42,14 @@ class Movies extends Component {
         });
     }
 
-    deleteItems(e) {
+    deleteItems = e => {
         let el = e.target;
         if (el.className = "dlt") {
             let bodyTable = el.parentNode.parentNode.parentNode;
             let item = el.parentNode.parentNode;
             bodyTable.removeChild(item);
+            this.movieSize--;
+            this.setState({ movieSize: this.movieSize });
         }
     }
 }
