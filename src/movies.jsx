@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import movies from './movies-data';
 import './style.css'
 class Movies extends Component {
-    movieSize = 5;
+    state = {
+        movieSize: 5
+    }
 
     render() { 
         return (
@@ -31,8 +33,8 @@ class Movies extends Component {
     }
 
     renderMsg() {
-        if (this.movieSize > 0) {
-            return `Showing ${this.movieSize} movies in the database.`;
+        if (this.state.movieSize > 0) {
+            return `Showing ${this.state.movieSize} movies in the database.`;
         }else {
             this.deleteTable();
             return `There is no movies in the database.`;
@@ -59,8 +61,8 @@ class Movies extends Component {
             let bodyTable = el.parentNode.parentNode.parentNode;
             let item = el.parentNode.parentNode;
             bodyTable.removeChild(item);
-            this.movieSize--;
-            this.setState({ movieSize: this.movieSize });
+            this.state.movieSize--;
+            this.setState({ movieSize: this.state.movieSize });
         }
     }
 
