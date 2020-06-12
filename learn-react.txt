@@ -1,0 +1,3 @@
+1. i can replace div by React.fragment if there is no need to use the div inside the render method in my component class
+2. state inside our component class is used to store data about our component
+3. setState() is used to prevent react that there is changes in the virtual dom (or specifically in the state of this component) so you have to update the real dom
