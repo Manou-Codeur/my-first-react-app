@@ -31,8 +31,12 @@ class Movies extends Component {
     }
 
     renderMsg() {
-        let msg = this.movieSize > 0 ? `Showing ${this.movieSize} movies in the database.` : `There is no movies in the database.`;
-        return msg;
+        if (this.movieSize > 0) {
+            return `Showing ${this.movieSize} movies in the database.`;
+        }else {
+            this.deleteTable();
+            return `There is no movies in the database.`;
+        }
     }
 
     renderItems() {
@@ -58,6 +62,11 @@ class Movies extends Component {
             this.movieSize--;
             this.setState({ movieSize: this.movieSize });
         }
+    }
+
+    deleteTable() {
+        const table = document.querySelector('table');
+        table.style.display = 'none';
     }
 }
  
