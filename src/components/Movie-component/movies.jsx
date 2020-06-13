@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import movies from '../movies-data';
-import '../style.css'
+import movies from './movies-data';
+import './movie-style.css'
 class Movies extends Component {
     state = {
         movieSize: 5

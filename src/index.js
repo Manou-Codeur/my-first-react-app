@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Movies from './components/movies';
+import Movies from './components/Movie-component/movies';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Movies />
-  </React.StrictMode>,
+  <Movies />,
   document.getElementById('root')
 );
 
