@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import movies from './movies-data';
-import './style.css'
+import movies from '../movies-data';
+import '../style.css'
 class Movies extends Component {
     state = {
         movieSize: 5
@@ -57,12 +57,11 @@ class Movies extends Component {
 
     deleteItems = e => {
         let el = e.target;
-        if (el.className = "dlt") {
+        if (el.className === "dlt") {
             let bodyTable = el.parentNode.parentNode.parentNode;
             let item = el.parentNode.parentNode;
             bodyTable.removeChild(item);
-            this.state.movieSize--;
-            this.setState({ movieSize: this.state.movieSize });
+            this.setState({ movieSize: this.state.movieSize - 1 });
         }
     }
 
