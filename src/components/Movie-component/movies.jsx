@@ -7,6 +7,7 @@ class Movies extends Component {
         movieData: movies
     }
 
+
     render() { 
         return (
             <React.Fragment>
@@ -29,6 +30,8 @@ class Movies extends Component {
                         {this.renderItems()}
                     </tbody>
                 </table>
+
+                
             </React.Fragment>
         )
     }
@@ -73,6 +76,12 @@ class Movies extends Component {
     deleteTable() {
         const table = document.querySelector('table');
         table.style.display = 'none';
+    }
+
+
+    componentWillUnmount () {
+        console.log('some item in the dom will be unmount!')
+
     }
 }
  
