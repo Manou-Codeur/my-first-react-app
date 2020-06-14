@@ -48,8 +48,8 @@ class Movies extends Component {
                 <tr key={movie._id}>
                     <td>{movie.title}</td>
                     <td>{movie.genre.name}</td>
-                    <td>{movie.dailyRentalRate}</td>
                     <td>{movie.numberInStock}</td>
+                    <td>{movie.dailyRentalRate}</td>
                     <td><button className="dlt">Delete</button></td>
                 </tr>
             );
