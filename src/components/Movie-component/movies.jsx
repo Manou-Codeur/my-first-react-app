@@ -3,7 +3,8 @@ import movies from './movies-data';
 import './movie-style.css'
 class Movies extends Component {
     state = {
-        movieSize: 5
+        movieSize: movies.length,
+        movieData: movies
     }
 
     render() { 
@@ -42,11 +43,11 @@ class Movies extends Component {
     }
 
     renderItems() {
-        return movies.map(movie => {
+        return this.state.movieData.map(movie => {
             return (
                 <tr key={movie._id}>
                     <td>{movie.title}</td>
-                    <td>{movie.genere}</td>
+                    <td>{movie.genre.name}</td>
                     <td>{movie.dailyRentalRate}</td>
                     <td>{movie.numberInStock}</td>
                     <td><button className="dlt">Delete</button></td>
@@ -55,13 +56,17 @@ class Movies extends Component {
         });
     }
 
-    deleteItems = e => {
+    deleteItems = (e) => {
         let el = e.target;
         if (el.className === "dlt") {
-            let bodyTable = el.parentNode.parentNode.parentNode;
-            let item = el.parentNode.parentNode;
-            bodyTable.removeChild(item);
-            this.setState({ movieSize: this.state.movieSize - 1 });
+            let id = el.parentNode.parentNode.key;
+            let movieDataCopy = [...this.state.movieData];
+            let index = movieDataCopy.findIndex(el => el._id === id);
+            movieDataCopy.splice(index, 1);
+            this.setState({ 
+                movieSize: this.state.movieSize - 1,
+                movieData: movieDataCopy
+            });
         }
     }
 
