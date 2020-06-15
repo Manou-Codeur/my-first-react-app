@@ -16,13 +16,28 @@ class Movies extends Component {
         //delete the item form the state
         movieDataCopy.splice(index, 1);
         this.setState({movieData: movieDataCopy});
+        //update the movieSize in the state
+        this.setState({movieSize: this.state.movieSize - 1})
+    }
+    
+    deleteTable() {
+        const table = document.querySelector('table');
+        table.style.display = 'none';
+    }
+
+    renderMsg = () => {
+        if (this.state.movieSize === 0) {
+            this.deleteTable();
+            return "There is no movie in the database";
+        }
+        else return `There is ${this.state.movieSize} movies in the database`
     }
 
     render() { 
         return (
             <React.Fragment>
                 <p className="currentState">
-                    here will be the msg
+                    {this.renderMsg()}
                 </p>
 
 
