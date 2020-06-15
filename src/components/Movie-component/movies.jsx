@@ -8,8 +8,14 @@ class Movies extends Component {
         movieData: movies
     }
 
-    deleteMovie = () => {
-        
+    deleteMovie = (e) => {
+        //init
+        let id = e.target.parentNode.parentNode.id;
+        let movieDataCopy = [...this.state.movieData];
+        let index = movieDataCopy.findIndex(el => el._id === id);
+        //delete the item form the state
+        movieDataCopy.splice(index, 1);
+        this.setState({movieData: movieDataCopy});
     }
 
     render() { 
@@ -19,7 +25,6 @@ class Movies extends Component {
                     here will be the msg
                 </p>
 
-                
 
                 <table>
                     <thead>

@@ -6,7 +6,7 @@ import {faHeart} from '@fortawesome/free-regular-svg-icons';
 class Movie extends Component {
     render() { 
         return ( 
-            <tr>
+            <tr id={this.props.data._id}>
                 <td>{this.props.data.title}</td>
                 <td>{this.props.data.genre.name}</td>
                 <td>{this.props.data.dailyRentalRate}</td>
