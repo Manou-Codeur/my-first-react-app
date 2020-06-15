@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import movies from './movies-data';
+import Movie from './Movie';
 import './movie-style.css'
 class Movies extends Component {
     state = {
@@ -7,13 +8,18 @@ class Movies extends Component {
         movieData: movies
     }
 
+    deleteMovie = () => {
+        
+    }
 
     render() { 
         return (
             <React.Fragment>
                 <p className="currentState">
-                    {this.renderMsg()}
+                    here will be the msg
                 </p>
+
+                
 
                 <table>
                     <thead>
@@ -23,11 +29,17 @@ class Movies extends Component {
                             <th>Stock</th>
                             <th>Rate</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
 
-                    <tbody onClick={this.deleteItems}>
-                        {this.renderItems()}
+                    <tbody>
+                        {this.state.movieData.map(movie => {
+                            return <Movie 
+                            key={movie._id} 
+                            data={movie} 
+                            deleteItem={this.deleteMovie}/>
+                        })}
                     </tbody>
                 </table>
 
@@ -36,53 +48,6 @@ class Movies extends Component {
         )
     }
 
-    renderMsg() {
-        if (this.state.movieSize > 0) {
-            return `Showing ${this.state.movieSize} movies in the database.`;
-        }else {
-            this.deleteTable();
-            return `There is no movies in the database.`;
-        }
-    }
-
-    renderItems() {
-        return this.state.movieData.map(movie => {
-            return (
-                <tr key={movie._id}>
-                    <td>{movie.title}</td>
-                    <td>{movie.genre.name}</td>
-                    <td>{movie.numberInStock}</td>
-                    <td>{movie.dailyRentalRate}</td>
-                    <td><button className="dlt">Delete</button></td>
-                </tr>
-            );
-        });
-    }
-
-    deleteItems = (e) => {
-        let el = e.target;
-        if (el.className === "dlt") {
-            let id = el.parentNode.parentNode.key;
-            let movieDataCopy = [...this.state.movieData];
-            let index = movieDataCopy.findIndex(el => el._id === id);
-            movieDataCopy.splice(index, 1);
-            this.setState({ 
-                movieSize: this.state.movieSize - 1,
-                movieData: movieDataCopy
-            });
-        }
-    }
-
-    deleteTable() {
-        const table = document.querySelector('table');
-        table.style.display = 'none';
-    }
-
-
-    componentWillUnmount () {
-        console.log('some item in the dom will be unmount!')
-
-    }
 }
  
 export default Movies;
