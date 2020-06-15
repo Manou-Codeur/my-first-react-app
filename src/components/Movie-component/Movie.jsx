@@ -4,6 +4,15 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faHeart} from '@fortawesome/free-regular-svg-icons';
 
 class Movie extends Component {
+    toogleLike = (e) => {
+        let el = e.target;
+        if (!el.classList.contains('tst')) {
+            el.classList.add('tst');
+        }else {
+            el.classList.remove('tst');
+        }
+    }
+
     render() { 
         return ( 
             <tr id={this.props.data._id}>
@@ -11,8 +20,8 @@ class Movie extends Component {
                 <td>{this.props.data.genre.name}</td>
                 <td>{this.props.data.dailyRentalRate}</td>
                 <td>{this.props.data.numberInStock}</td>
-                <td><span><FontAwesomeIcon icon={faHeart} /></span></td>
-                <td><button className="dlt" onClick={this.props.deleteItem}>Delete</button></td>
+                <td><span><FontAwesomeIcon onClick={this.toogleLike} icon={faHeart} className="tst" /></span></td>
+                <td><button className="dlt back" onClick={this.props.deleteItem}>Delete</button></td>
             </tr>
         );
     }

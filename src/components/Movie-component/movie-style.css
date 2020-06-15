@@ -27,4 +27,8 @@ tbody td {
     cursor: pointer;
     font-weight: 500;
 }
-
+ 
+.tst {
+    background-color: red;
+    border-radius: 100%;
+}
