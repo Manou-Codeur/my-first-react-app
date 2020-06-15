@@ -1,10 +1,36 @@
 import React, { Component } from 'react';
 import movies from './movies-data';
+import Movie from './Movie';
 import './movie-style.css'
 class Movies extends Component {
     state = {
         movieSize: movies.length,
         movieData: movies
+    }
+
+    deleteMovie = (e) => {
+        //init
+        let id = e.target.parentNode.parentNode.id;
+        let movieDataCopy = [...this.state.movieData];
+        let index = movieDataCopy.findIndex(el => el._id === id);
+        //delete the item form the state
+        movieDataCopy.splice(index, 1);
+        this.setState({movieData: movieDataCopy});
+        //update the movieSize in the state
+        this.setState({movieSize: this.state.movieSize - 1})
+    }
+    
+    deleteTable() {
+        const table = document.querySelector('table');
+        table.style.display = 'none';
+    }
+
+    renderMsg = () => {
+        if (this.state.movieSize === 0) {
+            this.deleteTable();
+            return "There is no movie in the database";
+        }
+        else return `There is ${this.state.movieSize} movies in the database`
     }
 
     render() { 
@@ -14,6 +40,7 @@ class Movies extends Component {
                     {this.renderMsg()}
                 </p>
 
+
                 <table>
                     <thead>
                         <tr>
@@ -22,58 +49,25 @@ class Movies extends Component {
                             <th>Stock</th>
                             <th>Rate</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
 
-                    <tbody onClick={this.deleteItems}>
-                        {this.renderItems()}
+                    <tbody>
+                        {this.state.movieData.map(movie => {
+                            return <Movie 
+                            key={movie._id} 
+                            data={movie} 
+                            deleteItem={this.deleteMovie}/>
+                        })}
                     </tbody>
                 </table>
+
+                
             </React.Fragment>
         )
     }
 
-    renderMsg() {
-        if (this.state.movieSize > 0) {
-            return `Showing ${this.state.movieSize} movies in the database.`;
-        }else {
-            this.deleteTable();
-            return `There is no movies in the database.`;
-        }
-    }
-
-    renderItems() {
-        return this.state.movieData.map(movie => {
-            return (
-                <tr key={movie._id}>
-                    <td>{movie.title}</td>
-                    <td>{movie.genre.name}</td>
-                    <td>{movie.dailyRentalRate}</td>
-                    <td>{movie.numberInStock}</td>
-                    <td><button className="dlt">Delete</button></td>
-                </tr>
-            );
-        });
-    }
-
-    deleteItems = (e) => {
-        let el = e.target;
-        if (el.className === "dlt") {
-            let id = el.parentNode.parentNode.key;
-            let movieDataCopy = [...this.state.movieData];
-            let index = movieDataCopy.findIndex(el => el._id === id);
-            movieDataCopy.splice(index, 1);
-            this.setState({ 
-                movieSize: this.state.movieSize - 1,
-                movieData: movieDataCopy
-            });
-        }
-    }
-
-    deleteTable() {
-        const table = document.querySelector('table');
-        table.style.display = 'none';
-    }
 }
  
 export default Movies;
