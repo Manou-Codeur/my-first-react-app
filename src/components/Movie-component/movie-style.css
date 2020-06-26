@@ -1,34 +1,53 @@
 .currentState {
-    font-size: 20px;
-    margin-left: 5%;
+  font-size: 20px;
+  margin-left: 5%;
 }
 
 table {
-    width: 100%;
-    font-size: 25px;
-    border-spacing: 5px;
+  width: 100%;
+  font-size: 25px;
+  border-spacing: 5px;
 }
 
- th {
-    background-color: whitesmoke;
+th {
+  background-color: whitesmoke;
 }
 
 tbody td {
-    text-align: center;
+  text-align: center;
 }
 
 .dlt {
-    background-color: red;
-    border: 0;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: medium;
-    cursor: pointer;
-    font-weight: 500;
+  background-color: red;
+  border: 0;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: medium;
+  cursor: pointer;
+  font-weight: 500;
 }
- 
+
 .tst {
-    background-color: red;
-    border-radius: 100%;
+  background-color: red;
+  border-radius: 100%;
+}
+
+.navBar {
+  background-color: whitesmoke;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  margin: 5px;
+  text-decoration: none;
+  color: black;
+  font-size: 19px;
+}
+
+.activeLinks {
+  color: rgba(0, 0, 0, 0.308);
 }
