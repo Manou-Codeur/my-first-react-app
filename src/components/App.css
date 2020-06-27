@@ -1,0 +1,27 @@
+form {
+  width: 50%;
+  margin: 50px auto;
+}
+
+nav {
+  background-color: whitesmoke;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  margin: 5px;
+  text-decoration: none;
+}
+
+.active {
+  color: black;
+  text-decoration: underline;
+}
+
+.heading {
+  text-align: center;
+  margin-top: 50px;
+}

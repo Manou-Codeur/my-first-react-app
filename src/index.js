@@ -8,7 +8,11 @@ import NavBar from "./components/NavBar";
 import SpecificMovie from "./components/SpecificMovie";
 import Customers from "./components/Customers";
 import Rental from "./components/Rental";
+import Login from "./components/login";
+import Register from "./components/register";
 import NotFound from "./components/Not-found";
+
+import "bootstrap/dist/css/bootstrap.css";
 
 ReactDOM.render(
   <React.Fragment>
@@ -20,6 +24,8 @@ ReactDOM.render(
           <Route path="/movies/:id" component={SpecificMovie} />
           <Route path="/customers" component={Customers} />
           <Route path="/rental" component={Rental} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
           <Route path="/notFound" component={NotFound} />
           <Route path="/movies" component={Movies} />
           <Redirect from="/" exact to="/movies" />

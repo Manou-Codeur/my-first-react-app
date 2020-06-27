@@ -21,6 +21,16 @@ class NavBar extends Component {
           <NavLink className="link" activeClassName="activeLinks" to="/rental">
             Rental
           </NavLink>
+          <NavLink className="link" activeClassName="activeLinks" to="/login">
+            Login
+          </NavLink>
+          <NavLink
+            className="link"
+            activeClassName="activeLinks"
+            to="/register"
+          >
+            Register
+          </NavLink>
         </div>
       </React.Fragment>
     );

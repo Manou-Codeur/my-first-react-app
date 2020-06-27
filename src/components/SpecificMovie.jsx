@@ -8,7 +8,9 @@ const SpecificMovie = props => {
   return (
     <React.Fragment>
       <h1>Movie {props.match.params.id}</h1>
-      <button onClick={goBack}>Save</button>
+      <button className="btn btn-primary m-2" onClick={goBack}>
+        Save
+      </button>
     </React.Fragment>
   );
 };
